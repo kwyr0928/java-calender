@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GUI 自由課題 レポート</title>
+</head>
+<body>
+    <header>
+        <h1>GUI 自由課題 レポート</h1>
+        <p>22FI038 川瀬 友里</p>
+    </header>
+
+    <main>
+        <section>
+            <h2>プログラムの概要</h2>
+            <p>カレンダーに関する基本的な機能を複数実装した。実装内容は以下に示す通りである。</br>
+            カレンダーの更新、予定やシフトの追加・確認・変更・削除、テーマカラーの変更、データの保存、プログラムの終了<br></p>
+            <ul>
+                <li><strong>カレンダーの更新:</strong> カレンダーの表示を選択した月と年に更新する。</li>
+                <li><strong>予定の追加:</strong> 選択した日に予定を追加する。</li>
+                <li><strong>シフトの追加:</strong> 選択した日にアルバイトの勤務予定時間を追加する。</li>
+                <li><strong>予定の確認:</strong> 選択した予定の詳細を確認する。</li>
+                <li><strong>予定の変更:</strong> 選択した予定の分類と詳細を設定する。</li>
+                <li><strong>予定の削除:</strong> 選択した予定を削除する。</li>
+                <li><strong>テーマカラーの変更:</strong> カレンダーのテーマカラーを変更する。</li>
+                <li><strong>データの保存:</strong> データをファイルに保存する。</li>
+                <li><strong>プログラムの終了:</strong> プログラムを終了する。</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>プログラムの仕様および操作方法</h2>
+            <p>プログラムで用いられている各種フィールドは以下に示す通りである。</p>
+            <p>ArrayList</p>
+            <ul>
+                <li><strong>schedule:</strong> 全ての予定はこの配列に追加される。</li>
+            </ul>
+            <p>JComboBox</p>
+                <ul>
+                    <li><strong>yearComboBox:</strong> カレンダーを表示する年を選択する。</li>
+                    <li><strong>monthComboBox:</strong> カレンダーを表示する月を選択する。</li>
+                    <li><strong>themeComboBox:</strong> テーマカラーを選択する。</li>
+                    <li><strong>jobComboBox1:</strong> シフトの開始時間を選択する。</li>
+                    <li><strong>jobComboBox2:</strong> シフトの終了時間を選択する。</li>
+                </ul>
+            <p>JButton</p>
+            <ul>
+                <li><strong>displayButton:</strong> カレンダーの更新を行うボタン。DisplayAction()によって操作が定義されている。</li>
+                <li><strong>addButton:</strong> 予定の追加を行うボタン。AddAction()によって操作が定義されている。</li>
+                <li><strong>jobButton:</strong> シフトの追加を行うボタン。JobAction()によって操作が定義されている。</li>
+                <li><strong>confirmButton:</strong> カレンダーの更新を行うボタン。ConfirmAction()によって操作が定義されている。</li>
+                <li><strong>updateButton:</strong> 予定の追加を行うボタン。DetailAction()によって操作が定義されている。</li>
+                <li><strong>removeButton:</strong> シフトの追加を行うボタン。RemoveAction()によって操作が定義されている。</li>
+            </ul>
+            <p>JRadioButton</p>
+            <ul>
+                <li><strong>radioButton1:</strong> 予定の分類に使用される。分類名＝大学</li>
+                <li><strong>radioButton2:</strong> 予定の分類に使用される。分類名＝遊び</li>
+                <li><strong>radioButton3:</strong> 予定の分類に使用される。分類名＝誕生日</li>
+                <li><strong>radioButton4:</strong> 予定の分類に使用される。分類名＝アルバイト</li>
+                <li><strong>radioButton5:</strong> 予定の分類に使用される。分類名＝その他</li>
+            </ul>
+            <p>JTextField</p>
+            <ul>
+                <li><strong>field:</strong> 予定の詳細を入力する。</li>
+            </ul>
+            <p>JList</p>
+            <ul>
+                <li><strong>list:</strong> DefaultTableModelと組み合わせて使用される。予定一覧を表示する。</li>
+            </ul>
+            <p>JTable</p>
+            <ul>
+                <li><strong>calendarTable:</strong> カレンダーを表示するためのテーブル。</li>
+            </ul>
+            <p>JLabel</p>
+            <ul>
+                <li><strong>monthLabel:</strong> 月のラベルを作成する。</li>
+            </ul>
+            <p>DefaultTableModel</p>
+            <ul>
+                <li><strong>tableModel:</strong> リストを管理する。</li>
+            </ul>
+            <p>Calendar</p>
+            <ul>
+                <li><strong>calendar:</strong> カレンダーの情報を取得する。</li>
+            </ul>
+            <p>SimpleDateFormat</p>
+            <ul>
+                <li><strong>sdf:</strong> 日付のフォーマットを保持している。<br><br></li>
+            </ul>
+            <img src="./image/起動時.png" width=40% height=40%>
+            <p>操作方法一覧</p>
+            <ol>
+                <li><strong>カレンダーの更新: </strong>左側にあるコンボボックスで年月を選択した後にこのボタンを押すと、カレンダーが選択した年月に合ったものに更新できる。</li>
+                <li><strong>予定の追加: </strong>このボタンを押すとダイアログが表示され、予定名を入力することで選択した日に予定を登録することができる。
+                日付を選択していない場合は、日付選択を促すダイアログが表示される。</li>
+                <img src="./image/予定の追加.png" width=40% height=40%>
+                <img src="./image/日付未選択時.png" width=40% height=40%>
+                <li><strong>シフトの追加: </strong>このボタンを押すとダイアログが表示され、開始時間と終了時間を入力することで選択した日にアルバイトの勤務時間を登録することができる。
+                    日付を選択していない場合は、日付選択を促すダイアログが表示される。</li>
+                    <img src="./image/シフトの追加.png" width=40% height=40%>
+                <li><strong>予定一覧: </strong>日付を選択した際、その日に登録されている予定とシフトが一覧で表示される。以下3種類の機能は、この予定一覧のリストの項目を選択している時のみ実行可能である。</li>
+                <li><strong>予定の確認: </strong>このボタンを押すと、予定名と分類と詳細をダイアログで確認できる。</li>
+                <img src="./image/予定の確認.png" width=40% height=40%>
+                <li><strong>予定の変更: </strong>ボタンの下にあるラジオボタンとテキストフィールドで分類と詳細を決めてからこのボタンを押すと、それらの情報が配列に保存され、反映される。</li>
+                <img src="./image/予定の変更.png" width=40% height=40%>
+                <li><strong>予定の削除: </strong>このボタンを押すと、選択している項目を削除することができる。削除前に確認のダイアログが表示される。いいえor取り消しを押した場合は削除される、リストの選択状態が解除される。</li>
+                <img src="./image/予定の削除.png" width=40% height=40%>
+                <li><strong>テーマカラー: </strong>左上のメニューバーから選択可能。ダイアログが表示され、コンボボックスから好きなカラーを選択すると、土日のセルの配色が変わる。(カレンダーを少しスライドする必要有？)</li>
+                <img src="./image/メニューバー.png" width=30% height=30%>
+                <img src="./image/テーマの変更.png" width=40% height=40%>
+                <li><strong>保存: </strong>データをファイルに保存することができる。次回起動時に自動的にファイルが読み込まれ、元の状態に戻すことができる。</li>
+                <li><strong>終了: </strong>プログラムを終了することができる。終了する前に確認のダイアログが表示される。</li>
+                <img src="./image/プログラムの終了.png" width=40% height=40%>
+            </ol>
+        </section>
+
+        <section>
+            <h2>プログラムのポイントおよび工夫点</h2>
+            <p>本講義で学んだ内容を可能な限り活用できるよう、メニューバー、ボタン、ダイアログ、ファイル、リスト、テキストフィールド、テーブル、コンボボックス等、様々な仕組みを実装した。<br>
+                GridLayoutやBorderLayoutを使用し、自然なUIになるように心掛けた。<br>
+                カレンダーを実装するにあたって、プログラムが終了してもデータを保持できるよう読み込みと保存を実装した。<br>
+                日付を選択していない時に注意のダイアログを出す等、細かい挙動にもこだわった。<br>
+            </p>
+        </section>     
+    </main>
+</body>
+</html>
